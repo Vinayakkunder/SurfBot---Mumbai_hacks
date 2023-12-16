@@ -7,6 +7,11 @@ import config
 import os
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
+# from googletrans import Translator
+import speech_recognition as sr
+import pyttsx3 
+# from ai4bharat.transliteration import XlitEngine
+
 os.environ["OPENAI_API_KEY"] = config.OPENAI_API_KEY
 os.environ["SERPAPI_API_KEY"] = config.SERPAPI_API_KEY
 file_path = './script.txt'
@@ -24,21 +29,56 @@ def content_extract(content_type, url):
         if text_content:
             save_text_to_file(text_content)
 
+# def translate(text):
+#     translator = Translator()
+
+#     translate_text = ""
+#     translate_text += " " + translator.translate(text, dest='hi').text
+#     print(translate_text)
+
+    # e = XlitEngine("hi", beam_width=10, rescore=True)
+    # out = e.translit_word(text, topk=5)
+    # print(out)
+
+def SpeakText(command):
+	
+	# Initialize the engine
+	engine = pyttsx3.init()
+	engine.say(command) 
+	engine.runAndWait()
+
+def speech_input():
+    r = sr.Recognizer()
+    while(1): 
+        try:
+            with sr.Microphone() as source2:
+                r.adjust_for_ambient_noise(source2, duration=0.1)
+                
+                #listens for the user's input 
+                print("listening...")
+                audio2 = r.listen(source2)
+                
+                # Using google to recognize audio
+                MyText = r.recognize_google(audio2)
+                MyText = MyText.lower()
+
+                print("Did you say ",MyText)
+                return MyText
+
+        
+        except sr.RequestError as e:
+            print("Could not request results; {0}".format(e))
+            return 0
+		
+        except sr.UnknownValueError:
+            print("unknown error occurred")
+            return 0
+
+
+
 
 def interacter_ask(url, content_type, query):
-
-    # if content_type=='video':
-    #     #user input
-    #     extract_captions(url)
-
-
-    # elif content_type=='text':
-    #     text_content = extract_text_from_webpage(url)
-    #     if text_content:
-    #         save_text_to_file(text_content)
-
     content_extract(content_type, url)
-
 
     try:
         # Open the file in read mode ('r')
@@ -74,6 +114,7 @@ def interacter_ask(url, content_type, query):
     docs = document_search.similarity_search(query)
     result = chain.run(input_documents=docs, question=query)
     print("result_ask: ", result)
+    SpeakText(result)
     return result
 
 def summarize(url, content_type):
@@ -100,8 +141,6 @@ def summarize(url, content_type):
     )
     texts = text_splitter.split_text(raw_test)
 
-    print(len(texts))
-
     # Download embeddings from OpenAI
     embeddings = OpenAIEmbeddings()
 
@@ -116,5 +155,7 @@ def summarize(url, content_type):
     return result
 
 if __name__=='__main__':
-    summarize(url='https://www.youtube.com/watch?v=gs-IDg-FoIQ', content_type='video')
-    interacter_ask(url='https://www.youtube.com/watch?v=gs-IDg-FoIQ', content_type='video', query='what is the method called?')
+    # summarize(url='https://www.youtube.com/watch?v=gs-IDg-FoIQ', content_type='video')
+    text_inp = speech_input()
+    interacter_ask(url='https://www.youtube.com/watch?v=_uQrJ0TkZlc', content_type='video', query=text_inp)
+    # translate(text='programming kya hota hai?')
