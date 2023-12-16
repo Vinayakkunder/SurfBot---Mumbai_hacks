@@ -23,7 +23,7 @@ def extract_text_from_webpage(url):
         print(f"Error fetching the webpage: {e}")
         return None
 
-def save_text_to_file(text, filename='scraper.txt'):
+def save_text_to_file(text, filename='script.txt'):
     try:
         # Save the cleaned and formatted text to a file
         with open(filename, 'w+', encoding='utf-8') as file:
