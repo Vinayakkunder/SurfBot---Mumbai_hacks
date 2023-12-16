@@ -12,8 +12,8 @@ import speech_recognition as sr
 import pyttsx3 
 # from ai4bharat.transliteration import XlitEngine
 
-os.environ["OPENAI_API_KEY"] = config.OPENAI_API_KEY
-os.environ["SERPAPI_API_KEY"] = config.SERPAPI_API_KEY
+os.environ["OPENAI_API_KEY"] = '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'
+os.environ["SERPAPI_API_KEY"] = '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'
 file_path = './script.txt'
 
 
@@ -62,7 +62,7 @@ def speech_input():
                 MyText = r.recognize_google(audio2)
                 MyText = MyText.lower()
 
-                print("Did you say ",MyText)
+                print("you said: ",MyText)
                 return MyText
 
         
@@ -82,7 +82,7 @@ def interacter_ask(url, content_type, query):
 
     try:
         # Open the file in read mode ('r')
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             # Read the entire content of the file
             raw_test = file.read()
 
@@ -101,7 +101,7 @@ def interacter_ask(url, content_type, query):
     )
     texts = text_splitter.split_text(raw_test)
 
-    print(len(texts))
+    # print(len(texts))
 
     # Download embeddings from OpenAI
     embeddings = OpenAIEmbeddings()
@@ -114,23 +114,23 @@ def interacter_ask(url, content_type, query):
     docs = document_search.similarity_search(query)
     result = chain.run(input_documents=docs, question=query)
     print("result_ask: ", result)
-    SpeakText(result)
+    # SpeakText(result)
     return result
 
 def summarize(url, content_type):
     content_extract(content_type, url)
 
-    try:
-        # Open the file in read mode ('r')
-        with open(file_path, 'r') as file:
-            # Read the entire content of the file
-            raw_test = file.read()
+    # try:
+    # Open the file in read mode ('r')
+    with open(file_path, 'r', encoding='utf-8') as file:
+        # Read the entire content of the file
+        raw_test = file.read()
 
 
-    except FileNotFoundError:
-        print(f"The file '{file_path}' does not exist.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    # except FileNotFoundError:
+    #     print(f"The file '{file_path}' does not exist.")
+    # except Exception as e:
+    #     print(f"An error occurred: {e}")
 
     # We need to split the text using Character Text Split such that it sshould not increse token size
     text_splitter = CharacterTextSplitter(
@@ -155,7 +155,9 @@ def summarize(url, content_type):
     return result
 
 if __name__=='__main__':
-    # summarize(url='https://www.youtube.com/watch?v=gs-IDg-FoIQ', content_type='video')
-    text_inp = speech_input()
-    interacter_ask(url='https://www.youtube.com/watch?v=_uQrJ0TkZlc', content_type='video', query=text_inp)
+    # op = summarize(url='https://en.wikipedia.org/wiki/Ashlesha_Thakur', content_type='text')
+    # print(op)
+    # text_inp = speech_input()
+    text_inp = 'summarize the content'
+    interacter_ask(url='https://aws.amazon.com/blogs/machine-learning/', content_type='text', query=text_inp)
     # translate(text='programming kya hota hai?')
