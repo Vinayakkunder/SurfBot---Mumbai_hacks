@@ -7,3 +7,6 @@ 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
 
 new apikey
 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
+
+api2
+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
