@@ -10,10 +10,9 @@ from langchain.llms import OpenAI
 # from googletrans import Translator
 import speech_recognition as sr
 import pyttsx3 
-# from ai4bharat.transliteration import XlitEngine
 
-os.environ["OPENAI_API_KEY"] = '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'
-os.environ["SERPAPI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = ['OPENAI_API_KEY']
+os.environ["SERPAPI_API_KEY"] = ['SERPAPI_API_KEY']
 file_path = './script.txt'
 
 
@@ -85,7 +84,6 @@ def interacter_ask(url, query):
     content_extract(content_type, url)
     
     try:
-        # Open the file in read mode ('r')
         with open(file_path, 'r', encoding='utf-8') as file:
             # Read the entire content of the file
             raw_test = file.read()
@@ -96,7 +94,6 @@ def interacter_ask(url, query):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-    # We need to split the text using Character Text Split such that it sshould not increse token size
     text_splitter = CharacterTextSplitter(
         separator = "\n",
         chunk_size = 800,
@@ -128,17 +125,15 @@ def summarize(url):
         content_type = 'text'
     content_extract(content_type, url)
 
-    # try:
-    # Open the file in read mode ('r')
-    with open(file_path, 'r', encoding='utf-8') as file:
-        # Read the entire content of the file
-        raw_test = file.read()
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            # Read the entire content of the file
+            raw_test = file.read()
 
-
-    # except FileNotFoundError:
-    #     print(f"The file '{file_path}' does not exist.")
-    # except Exception as e:
-    #     print(f"An error occurred: {e}")
+    except FileNotFoundError:
+        print(f"The file '{file_path}' does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
     # We need to split the text using Character Text Split such that it sshould not increse token size
     text_splitter = CharacterTextSplitter(
@@ -163,9 +158,5 @@ def summarize(url):
     return result
 
 if __name__=='__main__':
-    # op = summarize(url='https://en.wikipedia.org/wiki/Ashlesha_Thakur', content_type='text')
-    # print(op)
-    # text_inp = speech_input()
-    text_inp = 'summarize the content'
-    interacter_ask(url='https://aws.amazon.com/blogs/machine-learning/', content_type='text', query=text_inp)
-    # translate(text='programming kya hota hai?')
+    op = summarize(url='https://www.youtube.com/watch?v=KWgYha0clzw', content_type='video')
+    result = interacter_ask(url='https://aws.amazon.com/blogs/machine-learning/', content_type='text', query='user_input')

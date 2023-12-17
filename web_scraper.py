@@ -6,7 +6,7 @@ def extract_text_from_webpage(url):
     try:
         # Send a GET request to the URL
         response = requests.get(url)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
+        response.raise_for_status()
 
         # Parse the HTML content
         soup = BeautifulSoup(response.text, 'html.parser')
