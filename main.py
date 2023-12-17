@@ -12,8 +12,8 @@ import speech_recognition as sr
 import pyttsx3 
 # from ai4bharat.transliteration import XlitEngine
 
-os.environ["OPENAI_API_KEY"] = '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'
-os.environ["SERPAPI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
+os.environ["SERPAPI_API_KEY"] = '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'
 file_path = './script.txt'
 
 
@@ -77,9 +77,13 @@ def speech_input():
 
 
 
-def interacter_ask(url, content_type, query):
+def interacter_ask(url, query):
+    if 'youtube' in url:
+        content_type = 'video'
+    else:
+        content_type = 'text'
     content_extract(content_type, url)
-
+    
     try:
         # Open the file in read mode ('r')
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -117,7 +121,11 @@ def interacter_ask(url, content_type, query):
     # SpeakText(result)
     return result
 
-def summarize(url, content_type):
+def summarize(url):
+    if 'youtube' in url:
+        content_type = 'video'
+    else:
+        content_type = 'text'
     content_extract(content_type, url)
 
     # try:

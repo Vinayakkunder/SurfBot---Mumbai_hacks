@@ -1,0 +1,10 @@
+{
+    "name": "Ai Connect",
+    "version": "1",
+    "description": "Your Personal AI BOT",
+    "manifest_version": 3,
+    "permissions": ["tabs", "activeTab"],
+    "action": {
+      "default_popup": "index.html"
+    }
+  }
