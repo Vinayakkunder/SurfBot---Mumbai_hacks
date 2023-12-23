@@ -8,3 +8,6 @@ Demo video - https://drive.google.com/file/d/1vImp56L5JQNInNtk8MhuOAtkvms7DQWG/v
 ### This is a chrome browser based plugin which can make your internet surfing interactive and advanced,
 This application automatically gets your current browsed url and based on its content it learns and embeds the data,
 The user gets a chating interface on the browser plugin and can ask any queries related to the content and additionally for the youtube videos user can jump to any of the timestamp of the video based on its scenario input provided by user.
+
+
+![ss2](https://github.com/Vinayakkunder/Mumbai_hacks/assets/26023851/bcaa5765-b032-450c-9660-08e69a1635f8)
