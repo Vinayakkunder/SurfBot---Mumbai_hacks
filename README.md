@@ -1,4 +1,4 @@
-# Mumbai_hacks
+# Mumbai_hacks - Generative AI
 
 ## Team AIConnect 
 PPT - https://docs.google.com/presentation/d/12_wet51fMHK-M8cmFxOKWcNV1TgeAT7m-pDjjJ923dM/edit#slide=id.g264007f43b6_0_106
