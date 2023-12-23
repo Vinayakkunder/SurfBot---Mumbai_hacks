@@ -1,6 +1,8 @@
 # Mumbai_hacks
 
-## Team AIConnect
+## Team AIConnect 
+PPT - https://docs.google.com/presentation/d/12_wet51fMHK-M8cmFxOKWcNV1TgeAT7m-pDjjJ923dM/edit#slide=id.g264007f43b6_0_106
+Demo video - https://drive.google.com/file/d/1vImp56L5JQNInNtk8MhuOAtkvms7DQWG/view?resourcekey
 
 ## Product name - Ninja Surfering
 ### This is a chrome browser based plugin which can make your internet surfing interactive and advanced,
