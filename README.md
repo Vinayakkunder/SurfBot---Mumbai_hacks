@@ -11,3 +11,6 @@ The user gets a chating interface on the browser plugin and can ask any queries 
 
 
 ![ss2](https://github.com/Vinayakkunder/Mumbai_hacks/assets/26023851/bcaa5765-b032-450c-9660-08e69a1635f8)
+![ss4](https://github.com/Vinayakkunder/Mumbai_hacks/assets/26023851/93ad5dad-6f7f-4402-8c39-321b1a820e60)
+![ss3](https://github.com/Vinayakkunder/Mumbai_hacks/assets/26023851/d576c1f5-fbd7-46d7-b120-2c132dfa987f)
+![ss5](https://github.com/Vinayakkunder/Mumbai_hacks/assets/26023851/8a6a0c01-5c84-4bc8-9382-e07f9a2e9f01)
